@@ -1,41 +1,38 @@
-# Ferienhaus Marianne – Gäste-App 1.0
+# Ferienhaus Marianne 1.0.2 🏡🌊
 
-Kostenlose, statische Web-App für **ein iPad 6. Generation / iPadOS 17**, bevorzugt im Querformat.
+Kostenlose iPad-Web-App im Querformat für Gäste des Ferienhauses Marianne am Wolfgangsee. Ein iPad, statisches GitHub Pages Hosting.
 
-## Starten
-GitHub Pages: Settings → Pages → Deploy from a branch → main → /(root).
+**Webadresse:** https://mariostelzhamer7-code.github.io/ferienhaus-marianne/
 
-Anschließend in Safari öffnen und über Teilen → Zum Home-Bildschirm hinzufügen.
+## Neu in Version 1.0.2
+- Hellblaues modernes App-Icon und farblich integrierte St.-Wolfgang-Illustration auf dem Dashboard.
+- Größere Fotobereiche und Fotovergrößerung; ausführlichere Beschreibungstexte; passende Emojis; praktische Hinweise.
+- Google-Maps-Route ab Ferienhaus Marianne (Ried 72, 5360 St. Wolfgang) zeigt aktuelle Entfernung und Fahrzeit. Keine erfundenen Offline-Fahrzeiten.
+- 22 Sprachen für die App-Oberfläche. Notfallseite und Events-Hinweise in allen Sprachen. Längere Objektbeschreibungen sind aktuell Deutsch/Englisch; andere Sprachen verwenden dort Englisch.
+- Notfallnummern größer, keine Kopieren-Knöpfe, Ferienhaus-Adresse hervorgehoben.
+- Events: externes Veranstaltungsprogramm weiterhin auf Deutsch; App-Erklärtexte übersetzt.
+- Gastgeber-Einstellungen mit 'Version 1.0.2 · created by MS'.
+- Dorf der Tiere – Abersee bleibt ausgeblendet.
 
-## Funktionen
-- Gäste-Dashboard mit dem ausgewählten Wolfgangsee-Logo
-- Wetter: GeoSphere Austria (erste 2–3 Tage, sofern API erreichbar) und MET Norway (7 Tage); klare Datenquellen und Offline-Status
-- 5 Ausflugskategorien, Wanderhinweise zu geeignetem Schuhwerk, Adressen und Google Maps
-- Restaurants und Cafés, einschließlich Restaurant Bürglstein
-- 22 auswählbare Sprachen für die App-Bedienelemente
-- Originalsprachiger Veranstaltungskalender über Wolfgangsee Tourismus (aktueller externer Link)
-- Notfallnummern und lokale Gastgeber-Kontakte
-- WLAN-Name, Passwort und QR-Code; Navigations-QR-Code für Ausflugsziele
-- Gastgeber-Verwaltung mit lokal gesetztem Passwort: Gastname, Gästewechsel, Orte/Beschreibungen/Restaurants, Bilder, Sortierung, Ausblenden, Kontaktdaten
-- 3-Minuten-Inaktivitäts-Rückkehr zur Startseite, dabei bleibt die Sprache erhalten; beim Gästewechsel zurück auf Deutsch
-- Offline-Speicher für App-Hülle und gespeicherte Daten
+## Einmaliger Upload der 37 ausgewählten Originalfotos
+Das im Chat erzeugte ZIP **ferienhaus-marianne-1.0.2-assets.zip** enthält die 37 ausgewählten, komprimierten Fotos, das genau freigegebene App-Logo und die gewählte Wolfgangsee-Dashboard-Illustration.
 
-## Wichtig vor dem Betrieb
-1. Beim ersten Öffnen über das Zahnrad ein **eigenes Gastgeber-Passwort** festlegen. Das Passwort und die WLAN-Daten **niemals in dieses öffentliche Repository schreiben**.
-2. Gastgebernummer, WLAN-Zugangsdaten und ggf. weitere Kontaktnummern über die App auf dem iPad eintragen.
-3. Die Einstellungen und eigene Fotos sind **nur lokal** gespeichert (localStorage / IndexedDB). Beim Löschen der Safari-Website-Daten gehen sie verloren; es ist **kein Datenbackup** integriert.
-4. Passwortschutz ist **nur lokal**. Der statische öffentliche Webcode bietet keine serverseitige Zugriffskontrolle.
-5. Die Benutzeroberfläche ist auf 22 Sprachen vorbereitet. Die kuratierten Beschreibungen sind aktuell auf Deutsch und teilweise Englisch hinterlegt; fehlende Inhaltsübersetzungen müssen für eine vollständig lokalisierte Ausgabe nachgetragen werden.
-6. Offizielle Veranstaltungen werden wegen fehlender lizenzierter Echtzeit-Schnittstelle nicht automatisch als einzelne Karten kopiert: Die App öffnet den aktuellen Kalender auf der offiziellen Website.
-7. Fotos der Orte erscheinen, soweit lizenzierte Wikimedia-Bilder gefunden werden; alternativ können eigene Bilder im Gastgeberbereich hochgeladen werden. Nicht alle Orte haben bereits ein überprüftes Originalfoto.
-8. Bei einem iPad, das ständig mit voller Helligkeit und Ladestrom läuft, Gerätetemperatur und Belüftung beachten.
-9. GitHub Pages ist für statische Projektseiten gedacht und **nicht** für Checkout, Buchungen oder andere kommerzielle Transaktionen. Diese App enthält keine Buchungen oder Zahlungen.
+Die GitHub-Verbindung kann Textdateien, aber keine Dateien direkt aus dem Container auf GitHub übertragen. Deshalb ist ein einmaliger Upload des Foto-ZIPs notwendig. Bis dahin nutzt die App die vorhandenen Bilder und schnelle Platzhalter; das neue hellblaue Vektor-Logo ist bereits aktiv.
 
-## Externe Daten
-- GeoSphere Austria: https://data.hub.geosphere.at/ (CC BY 4.0)
-- MET Norway: https://api.met.no/ (CC BY 4.0)
-- Wolfgangsee Veranstaltungskalender: https://wolfgangsee.salzkammergut.at/veranstaltungen/veranstaltungskalender.html
-- QR Code JS: qrcodejs, MIT-Lizenz, als lokale Datei unter vendor/qrcode.min.js eingebunden; funktioniert offline.
-- Wikimedia Commons: Nur Dateien mit freier Lizenz; Lizenz und Urheberangaben bitte prüfen.
+1. ZIP aus dem Chat herunterladen, nicht entpacken und nicht umbenennen.
+2. GitHub Repository öffnen und in den Ordner **uploads** gehen.
+3. **Add file → Upload files** wählen, ZIP hochladen.
+4. **Commit changes** klicken.
+5. Unter **Actions** den Workflow **Install approved 1.0.2 photos and app artwork** kontrollieren. Er entpackt das ZIP automatisch, ordnet die Bilder zu, erstellt die iPad-Icons und aktualisiert die GitHub-Seite.
 
-Version 1.0 – created by MS.
+**Bildrechte:** Vor dem öffentlichen Upload bitte sicherstellen, dass die Weiterverwendung der 37 Fotos auf einer öffentlich zugänglichen Website erlaubt ist.
+
+## Hinweise
+- Für lokales Bearbeiten: Einstellungen mit selbst gesetztem Passwort; Daten, Namen und WLAN-Passwort bleiben auf diesem iPad. Nichts Geheimes in GitHub-Dateien schreiben.
+- Bei Löschen von Safari-Website-Daten können lokale Einstellungen verloren gehen.
+- Der Passwortschutz im Browser ist nicht mit einer serverseitigen Zugangskontrolle vergleichbar.
+- Offline: App-Gerüst und heruntergeladene Fotos werden zwischengespeichert. Wetter und aktuelle Events benötigen Internet.
+- Das dauerhaft mit Strom und hoher Helligkeit betriebene iPad sollte ausreichend belüftet werden.
+- Fahrzeiten, Eintritt, Öffnungszeiten und Saisonbetrieb beim jeweiligen Anbieter aktuell prüfen.
+
+Version 1.0.2 · created by MS.
