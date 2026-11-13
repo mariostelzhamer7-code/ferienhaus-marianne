@@ -1,0 +1,7 @@
+/* Simple offline-first shell cache. Online weather / calendar are never faked. */
+const VERSION="marianne-shell-v1.0.0";
+const STATIC=["./","./index.html","./style.css","./data.js","./i18n.js","./admin.js","./app.js","./assets/logo.svg","./assets/de-flag.svg","./manifest.webmanifest"];
+const QR="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";
+self.addEventListener("install",event=>{event.waitUntil((async()=>{const cache=await caches.open(VERSION);await cache.addAll(STATIC);try{await cache.add(new Request(QR,{mode:"no-cors"}))}catch(e){}await self.skipWaiting()})())});
+self.addEventListener("activate",event=>{event.waitUntil((async()=>{const names=await caches.keys();await Promise.all(names.filter(n=>n!==VERSION).map(n=>caches.delete(n)));await self.clients.claim()})())});
+self.addEventListener("fetch",event=>{const req=event.request;if(req.method!=="GET")return;const url=new URL(req.url);if(url.hostname.includes("met.no")||url.hostname.includes("geosphere.at")||url.hostname.includes("wikimedia.org"))return;if(url.origin===self.location.origin){event.respondWith((async()=>{const cache=await caches.open(VERSION);const cached=await cache.match(req,{ignoreSearch:true});if(cached)return cached;try{const live=await fetch(req);if(live.ok)cache.put(req,live.clone());return live}catch(e){return cached||Response.error()}})());return}if(url.href===QR){event.respondWith((async()=>{const cache=await caches.open(VERSION);return await cache.match(req)||await fetch(req).then(r=>{cache.put(req,r.clone());return r})})())}});
