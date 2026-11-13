@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'assets/logo.svg'
+      - 'assets/logo-source.b64'
       - '.github/workflows/generate-icons.yml'
 permissions:
   contents: write
@@ -14,25 +14,26 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install Pillow
         run: python -m pip install Pillow
-      - name: Render home-screen PNGs from logo
+      - name: Render complete icons from approved logo
         run: |
           python - <<'PY'
-          from PIL import Image, ImageOps
+          from PIL import Image
           from pathlib import Path
-          import base64, re, io
-          svg=Path("assets/logo.svg").read_text()
-          m=re.search(r'base64,([^"]+)',svg)
-          if not m:
-              raise RuntimeError("Logo image not found")
-          raw=base64.b64decode(m.group(1)+'===')
+          import base64, zlib, io
+          encoded=Path("assets/logo-source.b64").read_text()
+          raw=base64.b64decode(encoded,validate=False)
+          expected=0xc1a09f11
+          actual=zlib.crc32(raw)
+          if actual!=expected:
+              raise RuntimeError(f"Logo integrity check failed: {actual:08x} vs {expected:08x}")
           im=Image.open(io.BytesIO(raw)).convert("RGB")
-          im=ImageOps.fit(im,(512,512),method=Image.Resampling.LANCZOS)
+          im.load()
           for name,size in [("apple-touch-icon.png",180),("icon-192.png",192),("icon-512.png",512)]:
               im.resize((size,size),Image.Resampling.LANCZOS).save("assets/"+name,optimize=True)
           PY
-      - name: Commit PNG icons
+      - name: Commit real PNG icons
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/apple-touch-icon.png assets/icon-192.png assets/icon-512.png
-          git diff --cached --quiet || (git commit -m "assets: add real PNG iPad icons" && git push)
+          git diff --cached --quiet || (git commit -m "assets: generate verified approved Marianne logo PNGs" && git push)
