@@ -1,0 +1,96 @@
+name: Prepare fast licensed attraction photos
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data.js'
+      - '.github/workflows/prepare-photos.yml'
+permissions:
+  contents: write
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Pillow
+        run: python -m pip install Pillow
+      - name: Download compatible Commons preview photos
+        run: |
+          python - <<'PY'
+          import json,re,os,sys,html,subprocess,urllib.parse,urllib.request,io,concurrent.futures,unicodedata,time
+          from PIL import Image,ImageOps,ImageFile
+          from pathlib import Path
+          ImageFile.LOAD_TRUNCATED_IMAGES=True
+          Path("assets/photos").mkdir(parents=True,exist_ok=True)
+          subprocess.run(["node","-e","global.window={};require('./data.js');process.stdout.write(JSON.stringify([...window.MARIANNE_PLACES,...window.MARIANNE_RESTAURANTS]));"],capture_output=True,text=True,check=True)
+          items=json.loads(subprocess.check_output(["node","-e","global.window={};require('./data.js');process.stdout.write(JSON.stringify([...window.MARIANNE_PLACES,...window.MARIANNE_RESTAURANTS]));"],text=True))
+          # Conservative list of location-specific keywords. If none appears in the Commons
+          # file name, skip rather than show a misleading unrelated photo.
+          terms={
+            "schafberg":"schafbergbahn","church":"wolfgang","zwoelfer":"zwölferhorn","kaiservilla":"kaiservilla",
+            "schifffahrt":"wolfgangsee","falkenstein":"falkenstein","buerglweg":"bürglstein",
+            "schwarzensee":"schwarzensee","postalm":"postalm","plomberg":"plomberg",
+            "steinkluefte":"steinklüfte","vormauer":"vormauerstein","bleckwand":"bleckwand",
+            "badenwolf":"wolfgangsee","strandgilgen":"gilgen","naturstrobl":"strobl",
+            "sup":"wolfgangsee","elektroboot":"wolfgangsee","segeln":"wolfgangsee",
+            "wake":"wolfgangsee","abarena":"abarena","rodeln":"rodelbahn",
+            "dorftiere":"abersee","kleefeld":"kleefeld","kindersegeln":"wolfgangsee",
+            "therme":"eurothermen","altaussee":"altaussee","wellness":"leopoldhof",
+            "hallstatt":"hallstatt","europark":"europark","leopoldhof":"leopoldhof",
+            "dorfalm":"dorfalm","paul":"paul","roessl":"rössl","hias":"berau",
+            "genussschmied":"genussschmied","eden":"eden","buergl":"bürglstein"
+          }
+          def norm(s):
+              return unicodedata.normalize("NFKD",str(s)).casefold().encode("ascii","ignore").decode().replace("ss","ss")
+          def read(url):
+              rq=urllib.request.Request(url,headers={"User-Agent":"FerienhausMarianne/1.0.1 (educational guest guide; GitHub static preview downloader)","Accept":"application/json,image/*"})
+              with urllib.request.urlopen(rq,timeout=10) as r:
+                  return r.read()
+          def scan(item):
+              key=item["id"];s=item.get("photoQuery")
+              if not s:return None
+              target=norm(terms.get(key,item["title"])).strip()
+              query={"action":"query","generator":"search","gsrnamespace":6,"gsrlimit":12,"gsrsearch":s,
+                   "prop":"imageinfo","iiprop":"url|extmetadata","iiurlwidth":720,"format":"json"}
+              try:
+                  payload=json.loads(read("https://commons.wikimedia.org/w/api.php?"+urllib.parse.urlencode(query)))
+                  pages=list(payload.get("query",{}).get("pages",{}).values())
+                  good=[]
+                  for page in pages:
+                      i=(page.get("imageinfo")or [{}])[0];meta=i.get("extmetadata")or {}
+                      lic=str(meta.get("LicenseShortName",{}).get("value","")).casefold()
+                      title=page.get("title","")
+                      if not i.get("thumburl") or not re.search(r'\.jpe?g$|\.png$|\.webp$',title,re.I):continue
+                      if not re.search(r'cc.?by|cc0|public domain|^pd',lic):continue
+                      if target not in norm(title):continue
+                      good.append((page,i,meta,lic))
+                  if not good:return None
+                  page,i,meta,lic=sorted(good,key=lambda x:(len(x[0].get("title","")),x[0].get("title","")))[0]
+                  raw=read(i["thumburl"])
+                  im=Image.open(io.BytesIO(raw))
+                  im.load()
+                  im=ImageOps.exif_transpose(im).convert("RGB")
+                  im=ImageOps.fit(im,(720,405),method=Image.Resampling.LANCZOS)
+                  out=Path("assets/photos")/(key+".jpg")
+                  im.save(out,"JPEG",quality=73,subsampling=2,progressive=True,optimize=True)
+                  artist=re.sub(r'<[^>]+>'," ",html.unescape(str(meta.get("Artist",{}).get("value",""))))
+                  artist=" ".join(artist.split())[:90] or "Wikimedia Commons"
+                  return key,{"url":"./assets/photos/"+key+".jpg","creditUrl":i.get("descriptionurl",""),
+                              "author":artist,"license":meta.get("LicenseShortName",{}).get("value","")}
+              except Exception as exc:
+                  print("SKIP",key,str(exc)[:110],flush=True)
+                  return None
+          result={}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=7) as pool:
+              for value in pool.map(scan,items):
+                  if value:result[value[0]]=value[1]
+          Path("photos.js").write_text("window.MARIANNE_PHOTOS="+json.dumps(result,ensure_ascii=False,separators=(",",":"))+";\n",encoding="utf8")
+          print("Wrote locally optimized licensed photos:",len(result),"of",len(items),flush=True)
+          PY
+      - name: Commit images and photo attribution
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add photos.js assets/photos
+          git diff --cached --quiet || (git commit -m "assets: optimize locally hosted Commons attraction previews" && git push)
