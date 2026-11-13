@@ -35,7 +35,7 @@ Anschließend in Safari öffnen und über Teilen → Zum Home-Bildschirm hinzuf�
 - GeoSphere Austria: https://data.hub.geosphere.at/ (CC BY 4.0)
 - MET Norway: https://api.met.no/ (CC BY 4.0)
 - Wolfgangsee Veranstaltungskalender: https://wolfgangsee.salzkammergut.at/veranstaltungen/veranstaltungskalender.html
-- QR Code JS: qrcodejs 1.0.0 (MIT-Lizenz), bereitgestellt über cdnjs, nach erfolgreichem Laden offline zwischengespeichert
+- QR Code JS: qrcodejs, MIT-Lizenz, als lokale Datei unter vendor/qrcode.min.js eingebunden; funktioniert offline.
 - Wikimedia Commons: Nur Dateien mit freier Lizenz; Lizenz und Urheberangaben bitte prüfen.
 
 Version 1.0 – created by MS.
