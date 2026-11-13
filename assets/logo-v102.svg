@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Ferienhaus Marianne">
+<defs><linearGradient id="bg" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#f5fcff"/><stop offset="1" stop-color="#e1f2fc"/></linearGradient><linearGradient id="sun" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#99dffc"/><stop offset="1" stop-color="#61b8e6"/></linearGradient></defs>
+<rect width="512" height="512" rx="112" fill="url(#bg)"/>
+<circle cx="345" cy="149" r="63" fill="url(#sun)"/>
+<path d="M59 225 155 154 192 182 268 106 345 174 386 145 454 221" fill="none" stroke="#143d5e" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M129 255 253 153 318 205 350 185 421 252" fill="none" stroke="#163f5e" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M352 189v-39h24v55" fill="#163f5e"/>
+<rect x="238" y="221" width="18" height="18" rx="4" fill="#163f5e"/><rect x="261" y="221" width="18" height="18" rx="4" fill="#163f5e"/><rect x="238" y="244" width="18" height="18" rx="4" fill="#163f5e"/><rect x="261" y="244" width="18" height="18" rx="4" fill="#163f5e"/>
+<text x="256" y="342" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="51" fill="#133b5b" font-weight="400" letter-spacing="-2">Ferienhaus</text>
+<text x="256" y="418" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="77" fill="#103754" font-weight="700" letter-spacing="-3">Marianne</text>
+<path d="M58 450q90-34 178-5 104 31 216-8-68 42-155 31-121-18-239-18" fill="#77c9ea"/><path d="M76 472q113-17 206 1 95 18 151-12-67 37-160 25-120-13-197-14" fill="#4ea7d3"/>
+</svg>
