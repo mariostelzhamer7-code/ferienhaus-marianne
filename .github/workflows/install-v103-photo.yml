@@ -1,0 +1,55 @@
+name: Install Genussschmied photo 1.0.3
+on:
+  push:
+    paths:
+      - 'uploads/ferienhaus-marianne-1.0.3-genussschmied.zip'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Pillow
+        run: python -m pip install Pillow
+      - name: Validate ZIP and install photo
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          from PIL import Image
+          import io, re
+          archive=Path("uploads/ferienhaus-marianne-1.0.3-genussschmied.zip")
+          if not archive.is_file():
+              raise SystemExit("Please upload the ZIP to uploads/")
+          with ZipFile(archive) as z:
+              if set(z.namelist())!={"genussschmied.jpg"}:
+                  raise SystemExit("The ZIP must contain only genussschmied.jpg")
+              data=z.read("genussschmied.jpg")
+          if len(data)>2000000:
+              raise SystemExit("Photo exceeds size limit")
+          im=Image.open(io.BytesIO(data))
+          im.verify()
+          if im.format!="JPEG":
+              raise SystemExit("Photo must be JPEG")
+          target=Path("assets/curated/genussschmied.jpg")
+          target.parent.mkdir(exist_ok=True,parents=True)
+          target.write_bytes(data)
+          sw=Path("sw.js")
+          text=sw.read_text()
+          old='const CACHE_NAME="marianne-v1.0.3r1"'
+          if old in text:
+              text=text.replace(old,'const CACHE_NAME="marianne-v1.0.3-photo1"')
+          elif 'marianne-v1.0.3-photo1' not in text:
+              raise SystemExit("Unexpected service worker version")
+          sw.write_text(text)
+          print("Installed new Genussschmied photo:",len(data),"bytes")
+          PY
+      - name: Commit photo and refresh offline cache
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/curated/genussschmied.jpg sw.js
+          git diff --cached --quiet || (git commit -m "assets: replace Genussschmied restaurant photo in 1.0.3" && git push)
