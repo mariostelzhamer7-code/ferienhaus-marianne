@@ -1,7 +1,55 @@
-/* Simple offline-first shell cache. Online weather / calendar are never faked. */
-const VERSION="marianne-shell-v1.0.1";
-const STATIC=["./","./index.html","./style.css","./data.js","./i18n.js","./admin.js","./app.js","./assets/logo.svg","./assets/de-flag.svg","./manifest.webmanifest","./vendor/qrcode.min.js"];
-
-self.addEventListener("install",event=>{event.waitUntil((async()=>{const cache=await caches.open(VERSION);await cache.addAll(STATIC);await self.skipWaiting()})())});
-self.addEventListener("activate",event=>{event.waitUntil((async()=>{const names=await caches.keys();await Promise.all(names.filter(n=>n!==VERSION).map(n=>caches.delete(n)));await self.clients.claim()})())});
-self.addEventListener("fetch",event=>{const req=event.request;if(req.method!=="GET")return;const url=new URL(req.url);if(url.hostname.includes("met.no")||url.hostname.includes("geosphere.at")||url.hostname.includes("wikimedia.org"))return;if(url.origin===self.location.origin){event.respondWith((async()=>{const cache=await caches.open(VERSION);const cached=await cache.match(req,{ignoreSearch:true});if(cached)return cached;try{const live=await fetch(req);if(live.ok)cache.put(req,live.clone());return live}catch(e){return cached||Response.error()}})());return}if(url.href===QR){event.respondWith((async()=>{const cache=await caches.open(VERSION);return await cache.match(req)||await fetch(req).then(r=>{cache.put(req,r.clone());return r})})())}});
+/* Ferienhaus Marianne PWA 1.0.1 — guaranteed local shell and licensed photo previews. */
+const CACHE_NAME="marianne-v1.0.1r2";
+const ASSETS=[
+  "./",
+  "./index.html",
+  "./style.css",
+  "./modern.css",
+  "./data.js",
+  "./photos.js",
+  "./i18n.js",
+  "./admin.js",
+  "./app.js",
+  "./assets/logo.svg",
+  "./assets/icon-192.png",
+  "./assets/apple-touch-icon.png",
+  "./assets/de-flag.svg",
+  "./manifest.webmanifest",
+  "./vendor/qrcode.min.js",
+  "./assets/photos/schafberg.jpg",
+  "./assets/photos/zwoelfer.jpg",
+  "./assets/photos/kaiservilla.jpg",
+  "./assets/photos/schifffahrt.jpg",
+  "./assets/photos/schwarzensee.jpg",
+  "./assets/photos/plomberg.jpg"
+];
+self.addEventListener("install",event=>{
+  event.waitUntil((async()=>{
+    const cache=await caches.open(CACHE_NAME);
+    await cache.addAll(ASSETS);
+    await self.skipWaiting();
+  })());
+});
+self.addEventListener("activate",event=>{
+  event.waitUntil((async()=>{
+    const keys=await caches.keys();
+    await Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)));
+    await self.clients.claim();
+  })());
+});
+self.addEventListener("fetch",event=>{
+  const request=event.request;
+  if(request.method!=="GET")return;
+  const url=new URL(request.url);
+  if(url.origin!==self.location.origin)return;
+  event.respondWith((async()=>{
+    const cache=await caches.open(CACHE_NAME);
+    const cached=await cache.match(request,{ignoreSearch:true});
+    if(cached)return cached;
+    try{
+      const response=await fetch(request);
+      if(response.ok)await cache.put(request,response.clone());
+      return response;
+    }catch(error){return cached||Response.error()}
+  })());
+});
