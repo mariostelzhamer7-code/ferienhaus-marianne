@@ -1,38 +1,33 @@
-# Ferienhaus Marianne 1.0.2 🏡🌊
+# Ferienhaus Marianne 1.0.3 🏡🌊
 
-Kostenlose iPad-Web-App im Querformat für Gäste des Ferienhauses Marianne am Wolfgangsee. Ein iPad, statisches GitHub Pages Hosting.
+**App:** https://mariostelzhamer7-code.github.io/ferienhaus-marianne/
 
-**Webadresse:** https://mariostelzhamer7-code.github.io/ferienhaus-marianne/
+## Neu in Version 1.0.3
+- Design im Dashboard neben Sprache: **Auto / Hell / Dunkel**. Automatisch ist 08:00–20:00 Uhr hell und 20:00–08:00 Uhr dunkel, nach der iPad-Uhr. Auswahl wird lokal gespeichert.
+- Kontrastreiche Gestaltung aller wesentlichen Seiten, QR-Codes bleiben weiß/schwarz und gut lesbar; größere Texte, verbesserter iPad-Querformatumbruch.
+- Landschaftsbild im Dashboard läuft mit sanftem Übergang hinter der Wetteranzeige aus. Wetterquelle wird nur auf dem Dashboard nicht mehr angezeigt (im ausführlichen Wetterbereich vorhanden).
+- Keine Entfernung, Fahrzeit, Karte oder Navigation in Detailseiten. Dafür möglichst offizielle Telefonnummer mit +43; wenn keine gesicherte Telefonnummer bekannt ist, kein Telefonfeld.
+- Restaurant-Speisekarte und offizielle Website öffnen am Gäste-iPad ausschließlich ein vergrößertes QR-Fenster. Externe Websites und Menüs werden auf dem Smartphone des Gasts angesehen.
+- Reservierungshinweise bei Restaurants entfernt.
+- Neue UI-Texte und Knöpfe in 22 Sprachen; längere Eintragstexte auf Deutsch/Englisch, zusätzlich jeweils eine kurze lokale Beschreibung für die weiteren 20 Sprachen.
+- **Version 1.0.3 · created by MS** im Gastgeber-Bereich.
 
-## Neu in Version 1.0.2
-- Hellblaues modernes App-Icon und farblich integrierte St.-Wolfgang-Illustration auf dem Dashboard.
-- Größere Fotobereiche und Fotovergrößerung; ausführlichere Beschreibungstexte; passende Emojis; praktische Hinweise.
-- Google-Maps-Route ab Ferienhaus Marianne (Ried 72, 5360 St. Wolfgang) zeigt aktuelle Entfernung und Fahrzeit. Keine erfundenen Offline-Fahrzeiten.
-- 22 Sprachen für die App-Oberfläche. Notfallseite und Events-Hinweise in allen Sprachen. Längere Objektbeschreibungen sind aktuell Deutsch/Englisch; andere Sprachen verwenden dort Englisch.
-- Notfallnummern größer, keine Kopieren-Knöpfe, Ferienhaus-Adresse hervorgehoben.
-- Events: externes Veranstaltungsprogramm weiterhin auf Deutsch; App-Erklärtexte übersetzt.
-- Gastgeber-Einstellungen mit 'Version 1.0.2 · created by MS'.
-- Dorf der Tiere – Abersee bleibt ausgeblendet.
+## Einmaliger Fotoaustausch für Genussschmied
+Das neue Foto liegt in `ferienhaus-marianne-1.0.3-genussschmied.zip`, das im Chat zum Download angeboten wird.
 
-## Einmaliger Upload der 37 ausgewählten Originalfotos
-Das im Chat erzeugte ZIP **ferienhaus-marianne-1.0.2-assets.zip** enthält die 37 ausgewählten, komprimierten Fotos, das genau freigegebene App-Logo und die gewählte Wolfgangsee-Dashboard-Illustration.
+1. Das ZIP **nicht entpacken**.
+2. GitHub-Ordner [uploads](https://github.com/mariostelzhamer7-code/ferienhaus-marianne/tree/main/uploads) öffnen.
+3. Über **Add file → Upload files** die ZIP-Datei als `uploads/ferienhaus-marianne-1.0.3-genussschmied.zip` hochladen.
+4. Auf **Commit changes** klicken. Der Workflow **Install Genussschmied photo 1.0.3** ersetzt das alte Bild automatisch und erneuert den Offline-Cache.
 
-Die GitHub-Verbindung kann Textdateien, aber keine Dateien direkt aus dem Container auf GitHub übertragen. Deshalb ist ein einmaliger Upload des Foto-ZIPs notwendig. Bis dahin nutzt die App die vorhandenen Bilder und schnelle Platzhalter; das neue hellblaue Vektor-Logo ist bereits aktiv.
+Dieser manuelle Upload ist nötig, weil die vorhandene GitHub-Schnittstelle keine direkten Bilddateien aus dem Chat übertragen kann. Alle übrigen Änderungen sind bereits eingebaut. Bitte vorher sicherstellen, dass das Foto für eine öffentliche Website verwendet werden darf.
 
-1. ZIP aus dem Chat herunterladen, nicht entpacken und nicht umbenennen.
-2. GitHub Repository öffnen und in den Ordner **uploads** gehen.
-3. **Add file → Upload files** wählen, ZIP hochladen.
-4. **Commit changes** klicken.
-5. Unter **Actions** den Workflow **Install approved 1.0.2 photos and app artwork** kontrollieren. Er entpackt das ZIP automatisch, ordnet die Bilder zu, erstellt die iPad-Icons und aktualisiert die GitHub-Seite.
+## Sicherheit und Betrieb
+Alle Gäste- und WLAN-Zugangsdaten bleiben im lokalen iPad-Speicher, niemals im öffentlichen GitHub-Repository. Der Browser-Passcode ist keine echte serverseitige Zugriffskontrolle. Beim Löschen von Safari-Website-Daten können lokale Einstellungen verloren gehen.
 
-**Bildrechte:** Vor dem öffentlichen Upload bitte sicherstellen, dass die Weiterverwendung der 37 Fotos auf einer öffentlich zugänglichen Website erlaubt ist.
+Für den richtigen Zeitwechsel muss die Uhrzeit und Zeitzone des iPads stimmen. Ohne Internet funktionieren die Offline-App und bereits zwischengespeicherte Fotos, aber aktuelle Wetter- und Veranstaltungshinweise nicht. Auch QR-Zielseiten auf dem Gäste-Smartphone können Internet benötigen.
 
-## Hinweise
-- Für lokales Bearbeiten: Einstellungen mit selbst gesetztem Passwort; Daten, Namen und WLAN-Passwort bleiben auf diesem iPad. Nichts Geheimes in GitHub-Dateien schreiben.
-- Bei Löschen von Safari-Website-Daten können lokale Einstellungen verloren gehen.
-- Der Passwortschutz im Browser ist nicht mit einer serverseitigen Zugangskontrolle vergleichbar.
-- Offline: App-Gerüst und heruntergeladene Fotos werden zwischengespeichert. Wetter und aktuelle Events benötigen Internet.
-- Das dauerhaft mit Strom und hoher Helligkeit betriebene iPad sollte ausreichend belüftet werden.
-- Fahrzeiten, Eintritt, Öffnungszeiten und Saisonbetrieb beim jeweiligen Anbieter aktuell prüfen.
+## Bildrechte
+Die bisher hochgeladenen 37 Fotos werden unverändert weitergenutzt. Prüfe bei selbst gefundenen Fotos die Nutzungsrechte für öffentliche Veröffentlichung.
 
-Version 1.0.2 · created by MS.
+Version 1.0.3 · created by MS.
