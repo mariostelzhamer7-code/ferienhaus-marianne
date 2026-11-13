@@ -1,0 +1,83 @@
+name: Install approved 1.0.2 photos and app artwork
+on:
+  push:
+    paths:
+      - 'uploads/ferienhaus-marianne-1.0.2-assets.zip'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  install-assets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Pillow
+        run: python -m pip install Pillow
+      - name: Validate and prepare uploaded images
+        run: |
+          python - <<'PY'
+          import json,zipfile,io,pathlib,re,hashlib
+          from PIL import Image
+          archive=pathlib.Path("uploads/ferienhaus-marianne-1.0.2-assets.zip")
+          if not archive.exists():
+              raise SystemExit("Missing prepared ZIP in uploads/")
+          with zipfile.ZipFile(archive) as z:
+              names=z.namelist()
+              manifest=json.loads(z.read("manifest.json"))
+              ids=manifest["photos"]
+              assert len(ids)==37 and len(set(ids))==37
+              assert all(re.fullmatch(r'[a-z0-9_]+',x) for x in ids)
+              paths={f"photos/{i}.jpg" for i in ids}|{"brand/app-logo.png","brand/skyline.jpg","manifest.json"}
+              assert paths.issubset(set(names)), "ZIP missing expected files"
+              folder=pathlib.Path("assets/curated")
+              folder.mkdir(exist_ok=True,parents=True)
+              for i in ids:
+                  raw=z.read(f"photos/{i}.jpg")
+                  assert len(raw)<1000000
+                  im=Image.open(io.BytesIO(raw));im.verify()
+                  (folder/(i+".jpg")).write_bytes(raw)
+              raw=z.read("brand/app-logo.png")
+              im=Image.open(io.BytesIO(raw)).convert("RGB")
+              im.load()
+              im.save("assets/logo-v102.png",format="PNG",optimize=True)
+              for name,size in [("apple-touch-icon.png",180),("icon-192.png",192),("icon-512.png",512)]:
+                  im.resize((size,size),Image.Resampling.LANCZOS).save("assets/"+name,format="PNG",optimize=True)
+              backdrop=z.read("brand/skyline.jpg")
+              Image.open(io.BytesIO(backdrop)).verify()
+              pathlib.Path("assets/skyline-v102.jpg").write_bytes(backdrop)
+          override={i:{"url":"./assets/curated/"+i+".jpg"} for i in ids}
+          pathlib.Path("curated.js").write_text("/* Approved curated photos, stored in this repository */\nwindow.MARIANNE_PHOTOS=Object.assign({},window.MARIANNE_PHOTOS||{},"+json.dumps(override,ensure_ascii=False,separators=(",",":"))+");\n")
+          app=pathlib.Path("app.js")
+          text=app.read_text()
+          text=text.replace("./assets/skyline-v102.svg","./assets/skyline-v102.jpg")
+          text=text.replace("assets/logo-v102.svg","assets/logo-v102.png")
+          app.write_text(text)
+          admin=pathlib.Path("admin.js")
+          admin.write_text(admin.read_text().replace("assets/logo-v102.svg","assets/logo-v102.png"))
+          index=pathlib.Path("index.html")
+          text=index.read_text().replace('type="image/svg+xml" href="./assets/logo-v102.svg"','type="image/png" href="./assets/icon-192.png"')
+          index.write_text(text)
+          sw=pathlib.Path("sw.js")
+          swtext=sw.read_text()
+          swtext=swtext.replace("marianne-v1.0.2r1","marianne-v1.0.2withphotos")
+          sw.write_text(swtext)
+          print("Installed",len(ids),"approved photos, 1 logo and 1 skyline")
+          PY
+      - name: Ensure images are optimized and correctly assigned
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          content=Path("curated.js").read_text()
+          ids=re.findall(r'assets/curated/([a-z0-9_]+)\.jpg',content)
+          assert len(ids)==37
+          assert all(Path("assets/curated/"+i+".jpg").exists() for i in ids)
+          assert Path("assets/logo-v102.png").exists()
+          PY
+      - name: Commit installed images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/curated assets/logo-v102.png assets/skyline-v102.jpg assets/apple-touch-icon.png assets/icon-192.png assets/icon-512.png curated.js app.js admin.js index.html sw.js
+          git diff --cached --quiet || (git commit -m "release: install 37 guest-selected photos and exact 1.0.2 artwork" && git push)
