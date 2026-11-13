@@ -32,3 +32,29 @@ ko:{welcome:"환영합니다!",glad:"방문해 주셔서 감사합니다",weathe
 };
 window.MARIANNE_T=function(key,lang){var entry=window.MARIANNE_I18N[lang]||window.MARIANNE_I18N.de;return entry[key]||window.MARIANNE_I18N.de[key]||key;};
 window.MARIANNE_LOCALE=function(code){return ({no:"nb-NO",zh:"zh-CN",sr:"sr-Latn-RS"})[code]||code;};
+
+
+/* Safety messages are especially important for the hiking category. */
+const MARIANNE_SAFETY = {
+nl:["Draag stevige schoenen met goede grip. Licht schoeisel is niet geschikt.","Wandelschoenen, tredzekerheid en een goede conditie zijn vereist."],
+it:["Indossare scarpe robuste e antiscivolo. Le scarpe leggere non sono adatte.","Sono necessari scarponi da trekking, passo sicuro e buona forma fisica."],
+hr:["Nosite čvrstu obuću koja se ne kliže. Lagana obuća nije prikladna.","Potrebne su planinarske cipele, siguran korak i dobra kondicija."],
+cs:["Noste pevnou protiskluzovou obuv. Lehká obuv není vhodná.","Nutná je turistická obuv, jistý krok a dobrá kondice."],
+fr:["Portez des chaussures solides et antidérapantes. Les chaussures légères ne conviennent pas.","Des chaussures de randonnée, un pied sûr et une bonne condition physique sont nécessaires."],
+pl:["Załóż solidne buty z antypoślizgową podeszwą. Lekkie obuwie nie jest odpowiednie.","Wymagane są buty trekkingowe, pewny krok i dobra kondycja."],
+sl:["Nosite trdne čevlje z nedrsečim podplatom. Lahka obutev ni primerna.","Potrebni so pohodni čevlji, zanesljiv korak in dobra kondicija."],
+sk:["Noste pevnú protišmykovú obuv. Ľahká obuv nie je vhodná.","Potrebné sú turistické topánky, istý krok a dobrá kondícia."],
+hu:["Viseljen stabil, csúszásmentes cipőt. A könnyű lábbeli nem megfelelő.","Túrabakancs, biztos lépés és jó erőnlét szükséges."],
+da:["Brug solidt, skridsikkert fodtøj. Lette sko er ikke egnede.","Vandrestøvler, sikkert fodfæste og god kondition er påkrævet."],
+no:["Bruk solide sko med godt grep. Lette sko er ikke egnet.","Tursko, stødig gange og god fysisk form er nødvendig."],
+sv:["Använd stadiga skor med bra grepp. Lätta skor är inte lämpliga.","Vandringskängor, säker fot och god kondition krävs."],
+fi:["Käytä tukevia, pitäviä kenkiä. Kevyet kengät eivät sovellu.","Vaelluskengät, varma askellus ja hyvä kunto ovat tarpeen."],
+es:["Use calzado firme y antideslizante. El calzado ligero no es adecuado.","Se requieren botas de senderismo, paso seguro y buena forma física."],
+bs:["Nosite čvrstu obuću koja se ne kliže. Lagana obuća nije prikladna.","Potrebne su planinarske cipele, siguran korak i dobra kondicija."],
+sr:["Nosite čvrstu obuću sa neklizajućim đonom. Laka obuća nije prikladna.","Potrebne su planinarske cipele, siguran korak i dobra kondicija."],
+el:["Φορέστε ανθεκτικά, αντιολισθητικά παπούτσια. Τα ελαφριά παπούτσια δεν είναι κατάλληλα.","Απαιτούνται ορειβατικά παπούτσια, σταθερό βήμα και καλή φυσική κατάσταση."],
+zh:["请穿结实、防滑的鞋。轻便鞋不适合徒步。","需要登山鞋、稳健的脚步和良好的体能。"],
+ja:["滑りにくい丈夫な靴を履いてください。軽い靴は適していません。","登山靴、確かな足取り、十分な体力が必要です。"],
+ko:["미끄럼 방지 기능이 있는 튼튼한 신발을 착용하세요. 가벼운 신발은 적합하지 않습니다.","등산화, 안정적인 발걸음, 충분한 체력이 필요합니다."]
+};
+Object.keys(MARIANNE_SAFETY).forEach(code=>Object.assign(window.MARIANNE_I18N[code],{sturdy:MARIANNE_SAFETY[code][0],difficult:MARIANNE_SAFETY[code][1]}));
