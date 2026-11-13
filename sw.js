@@ -1,5 +1,5 @@
 /* Ferienhaus Marianne 1.0.2 — one-iPad offline shell and optional local image cache. */
-const CACHE_NAME="marianne-v1.0.2r2";
+const CACHE_NAME="marianne-v1.0.2withphotos";
 const CORE=[
  "./","./index.html","./style.css","./modern.css","./v102.css","./data.js",
  "./photos.js","./curated.js","./i18n.js","./v102-i18n.js","./v102-details.js",
