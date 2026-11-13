@@ -6,7 +6,7 @@ window.MARIANNE_V103_INFO={
   },
   "dorfalm": {
     "phone": "+43 6138 20145",
-    "menu": "https://www.dorf-alm.at/de/restaurant-speisekarte",
+    "menu": "https://www.leopoldhof.at/wp-content/uploads/2026/07/Speisekarte-Dorf-Alm_2026_Website.pdf",
     "website": "https://www.leopoldhof.at/dorf-alm/"
   },
   "paul": {
@@ -29,7 +29,7 @@ window.MARIANNE_V103_INFO={
   },
   "eden": {
     "phone": "+43 664 4040577",
-    "menu": "https://www.daseden.at/menue.html"
+    "menu": "https://www.daseden.at/pdf/menu/speisekarte.pdf"
   },
   "buergl": {
     "phone": "+43 6138 20101",
