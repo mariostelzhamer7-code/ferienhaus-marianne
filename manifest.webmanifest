@@ -1,0 +1,20 @@
+{
+  "name": "Ferienhaus Marianne",
+  "short_name": "Marianne",
+  "description": "Digitaler Gästeführer für St. Wolfgang am Wolfgangsee",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f0f8fc",
+  "theme_color": "#eaf5fc",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "./assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
