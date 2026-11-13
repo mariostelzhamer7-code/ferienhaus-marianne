@@ -1,0 +1,72 @@
+/* Ferienhaus Marianne 1.0.2 – iPad landscape improvements */
+:root{--brand-ice:#e7f5fc;--brand-pale:#d0eaf8;--brand-blue:#3e9ccc;--brand-deep:#143d5e}
+html{overflow-wrap:normal;hyphens:none}h1,h2,h3,button,.badge,.tile,.category-card,.detail-v102,.events-v102{word-break:normal;overflow-wrap:normal;hyphens:none}
+.header .brand-logo{object-fit:cover;background:#e9f7fc;border-color:#bedee9}
+.hero{background:linear-gradient(125deg,#dceffb 0%,#d3eaf8 47%,#8ebfdf 100%);isolation:isolate}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(234,247,253,.22),rgba(224,241,251,.0) 62%);pointer-events:none}
+.landscape-illustration{position:absolute;inset:0 0 0 47%;z-index:0;overflow:hidden;display:block;pointer-events:none}
+.landscape-illustration .landscape{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom;opacity:.94;border-radius:0}
+.hero-content{width:min(670px,57%);max-width:57%;z-index:2}
+.hero-content .weather-card{box-shadow:0 12px 30px rgba(29,108,155,.12);background:rgba(255,255,255,.94)}
+/* spacious attractive detail pages */
+.detail-v102{display:grid;grid-template-columns:minmax(260px,45%) minmax(0,1fr);gap:21px;align-items:start;margin:8px auto 26px;max-width:1380px}
+.detail-v102 .detail-media-col,.detail-v102 .detail-content-col{min-width:0}
+.detail-image-button{width:100%;height:clamp(305px,40vh,460px);display:block;position:relative;cursor:zoom-in;padding:0;border:0;background:linear-gradient(140deg,#d4ebfa,#f3faff);border-radius:23px;overflow:hidden;box-shadow:0 11px 30px rgba(13,78,122,.12)}
+.detail-image-button:focus-visible{outline:3px solid var(--brand-blue)}
+.detail-v102 .detail-photo{width:100%;height:100%;min-height:0;border:0;border-radius:0;position:relative;background:linear-gradient(130deg,#c4e3f5,#edf8fd)}
+.detail-v102 .detail-photo img{height:100%;width:100%;object-fit:cover;position:absolute;inset:0}
+.detail-v102 .detail-photo .photo-credit{font-size:10px;max-width:75%;bottom:11px;left:11px}
+.image-expand{position:absolute;right:13px;bottom:12px;background:rgba(255,255,255,.9);padding:9px 14px;border-radius:99px;z-index:3;font-size:.85rem;font-weight:750;color:#236287;box-shadow:0 3px 10px rgba(17,78,121,.14)}
+.detail-v102 .detail-chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:13px}
+.detail-chip{display:flex;align-items:center;gap:10px;background:linear-gradient(140deg,#fff,#eaf7fd);border:1px solid #d9eaf5;border-radius:15px;padding:13px 15px;min-height:62px;font-size:.87rem;font-weight:700;color:#245977;line-height:1.4}
+.detail-chip>span:first-child{font-size:1.35rem}
+.detail-content-col{background:rgba(255,255,255,.97);padding:clamp(20px,2.4vw,32px);border:1px solid #d5e6f2;border-radius:23px;box-shadow:0 11px 29px rgba(11,78,126,.085)}
+.detail-kind{font-size:.78rem;color:#247dac;font-weight:850;letter-spacing:.035em;margin-bottom:9px}
+.detail-content-col h2{font-size:clamp(1.45rem,2.3vw,2.1rem);letter-spacing:-.025em;color:#123853;line-height:1.15;margin:0 0 15px}
+.detail-description{font-size:clamp(.93rem,1.08vw,1.06rem);line-height:1.67;color:#38566e;margin:0 0 19px;white-space:normal}
+.detail-v102 .notice{display:flex;align-items:flex-start;gap:8px;padding:12px 16px;margin:14px 0;border-radius:14px;font-size:.85rem;line-height:1.5}
+.detail-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:16px 0}
+.detail-info-card{background:#f0f8fd;border:1px solid #d8eaf4;border-radius:16px;padding:15px 16px;min-width:0}
+.detail-info-card h3{font-size:.91rem;color:#154d71;margin:0 0 8px}
+.detail-info-card p{font-size:.86rem;color:#476c83;line-height:1.55;margin:0;word-break:normal;overflow-wrap:break-word}
+.detail-map-note{display:block;color:#6c8ba0;font-size:.74rem;line-height:1.4;margin-top:8px}
+.detail-v102 .detail-actions{display:flex;gap:9px;align-items:stretch;margin-top:16px}
+.detail-v102 .detail-actions .btn{font-size:.84rem;white-space:normal;min-height:43px;border-radius:12px}
+.detail-v102 .footnote{margin:14px 0 0;font-size:.77rem;color:#628197}
+.photo-modal{max-width:min(93vw,1040px);max-height:92vh;width:100%}.photo-modal img{display:block;max-height:73vh;max-width:100%;object-fit:contain;margin:16px auto 0;border-radius:14px}
+/* Emergency page: no copy buttons and high-contrast phone numbers */
+.emergency-v102{max-width:1380px;margin:0 auto 30px}
+.emergency-warning{background:#fff6dc;color:#755417;border:1px solid #f3d79c;border-radius:15px;font-weight:700;line-height:1.5;font-size:.91rem;margin:0 0 16px;padding:13px 18px}
+.emergency-content{padding:21px 25px;background:rgba(255,255,255,.97);border:1px solid #dae8f1;border-radius:24px;box-shadow:0 10px 27px rgba(16,78,118,.065)}
+.emergency-heading{display:flex;align-items:center;gap:13px;margin-bottom:17px}
+.emergency-heading>span{font-size:2rem}
+.emergency-heading h2{font-size:clamp(1.1rem,1.6vw,1.4rem);color:#184b6c;margin:0}
+.emergency-v102 .emergency-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.emergency-v102 .emergency-card{min-width:0;display:flex;justify-content:space-between;gap:10px;border-radius:16px;background:linear-gradient(125deg,#fafdff,#ebf7fd);padding:13px 15px;border:1px solid #dbeaf5}
+.emergency-v102 .emergency-label{display:flex;align-items:center;gap:9px;min-width:0;color:#244d68;font-weight:700;font-size:.81rem;line-height:1.36}
+.emergency-v102 .emergency-symbol{font-size:1.25rem}
+.emergency-v102 .emergency-card strong{white-space:nowrap;color:#0b6396;font-size:clamp(1.3rem,2vw,1.85rem);font-weight:850;font-variant-numeric:tabular-nums}
+.emergency-address{display:flex;gap:15px;margin-top:18px;padding:17px 20px;border-radius:18px;border:1px solid #acd8f1;background:#e5f5ff}
+.emergency-address-icon{font-size:1.7rem}
+.emergency-address h3{margin:0 0 6px;font-size:1.04rem;color:#174e74}
+.emergency-address p{margin:0;font-size:1rem;line-height:1.5;font-weight:660;color:#153e5c}
+.extra-contacts-title{font-size:1.03rem;margin:21px 0 12px}.emergency-v102 .emergency-grid.extra .emergency-card strong{font-size:1.08rem;word-break:break-word;overflow-wrap:anywhere}
+/* Events panel fills screen while keeping official calendar as external German source */
+.events-v102{background:rgba(255,255,255,.96);border:1px solid #dcebf5;border-radius:24px;overflow:hidden;box-shadow:0 10px 30px rgba(20,91,141,.075)}
+.events-top{background:linear-gradient(114deg,#e1f3fc,#c8e7f8 70%,#a7d9f2);padding:26px 30px 19px}
+.events-heading{display:flex;align-items:center;gap:15px}
+.events-icon{font-size:2rem;width:63px;height:63px;display:grid;place-items:center;background:rgba(255,255,255,.75);border-radius:18px}
+.events-heading h2{font-size:clamp(1.55rem,2.1vw,2.05rem);margin:3px 0 8px;color:#134c72}
+.events-heading p{color:#47758c;margin:0;font-size:.91rem}
+.events-places{font-weight:750;color:#1e6791;font-size:.85rem;margin-top:19px}
+.events-bottom{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(230px,1fr);gap:20px;padding:26px 30px}
+.events-description h3{font-size:1.1rem;margin:0 0 10px;color:#174b70}
+.events-description p{font-size:1rem;line-height:1.6;color:#4e7186;margin:9px 0}
+.events-description .events-light{font-size:.88rem;color:#7390a1}
+.events-action{background:#f0f8fc;border-radius:18px;padding:20px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.events-globe{font-size:2rem}
+.events-action .btn{font-size:1rem;min-height:51px;justify-content:center}
+.events-action p{margin:0;color:#617f92;font-size:.81rem;line-height:1.55}
+@media (max-width:870px){.detail-v102{grid-template-columns:1fr}.detail-image-button{height:300px}.hero-content{max-width:64%;width:64%}.landscape-illustration{left:40%}.emergency-v102 .emergency-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.events-bottom{grid-template-columns:1fr}}
+@media (orientation:landscape) and (max-height:650px){.detail-v102{grid-template-columns:minmax(260px,44%) minmax(0,1fr)}.detail-image-button{height:315px}.detail-content-col{padding:16px}.detail-description{font-size:.86rem;line-height:1.48}.detail-info-card{padding:10px}.detail-v102 .detail-info-grid{margin:9px 0}.detail-v102 .detail-actions{gap:6px}.detail-v102 .detail-actions .btn{padding:9px;font-size:.73rem}.emergency-content{padding:15px}.emergency-v102 .emergency-card{padding:10px}.events-top{padding:18px 24px}.events-bottom{padding:18px 24px}}
+@media (orientation:portrait) and (max-width:760px){.hero-content{max-width:100%;width:100%}.landscape-illustration{left:0;opacity:.29}.detail-v102{grid-template-columns:1fr}.detail-info-grid{grid-template-columns:1fr}.detail-image-button{height:260px}.detail-chip{font-size:.78rem}.emergency-v102 .emergency-grid{grid-template-columns:1fr}.emergency-content{padding:17px}.events-bottom{grid-template-columns:1fr;padding:19px}.events-top{padding:19px}.events-heading{gap:9px}.events-heading h2{font-size:1.3rem}}
