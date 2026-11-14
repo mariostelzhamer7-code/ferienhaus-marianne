@@ -1,7 +1,7 @@
 {
   "name": "Ferienhaus Marianne",
   "short_name": "Ferienhaus Marianne",
-  "description": "Ferienhaus Marianne 1.0.3 – iPad Gästeführer am Wolfgangsee",
+  "description": "Ferienhaus Marianne 1.0.4 – iPad Gästeführer am Wolfgangsee",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -35,5 +35,5 @@
       "purpose": "any"
     }
   ],
-  "version": "1.0.3"
+  "version": "1.0.4"
 }
