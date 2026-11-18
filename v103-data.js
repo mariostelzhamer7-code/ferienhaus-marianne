@@ -2,7 +2,7 @@
 window.MARIANNE_V103_INFO={
   "leopoldhof": {
     "phone": "+43 6138 2438",
-    "menu": "https://www.leopoldhof.at/kulinarik-restaurant/landgasthof/"
+    "menu": "https://www.leopoldhof.at/wp-content/uploads/2026/09/Speisekarte-Landgasthof-Leopoldhof_Herbst-2026.pdf"
   },
   "dorfalm": {
     "phone": "+43 6138 20145",

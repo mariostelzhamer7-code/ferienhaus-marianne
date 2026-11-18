@@ -33,3 +33,12 @@ Für den richtigen Zeitwechsel muss die Uhrzeit und Zeitzone des iPads stimmen. 
 Die bisher hochgeladenen 37 Fotos werden unverändert weitergenutzt. Prüfe bei selbst gefundenen Fotos die Nutzungsrechte für öffentliche Veröffentlichung.
 
 Version 1.0.4 · created by MS.
+
+## Korrektur-Build 1.0.4r2 · 18.11.2026
+- QR-Codes kontrastreicher und für iPad schärfer (schwarz/weiß, weiße Ruhezone, passende Größe, geringer codierte Datenmenge bei langen Links).
+- Verifizierte Speisekarten-Adresse für den Leopoldhof direkt verlinkt; Dorf-Alm-PDF bleibt erhalten.
+- Wander-Schwierigkeitsstufen inklusive Farbsymbol und Übersetzung in 22 Sprachen in der Detailansicht sichtbar.
+- Überflüssiger Zurück-Button in Gastgeber-Einstellungen entfernt; Sperren bleibt.
+- Gastname in der Kopfzeile etwas größer; übriges Layout bleibt gleich.
+- Geänderter Offline-Cache für zuverlässige Aktualisierung.
+- Hinweis: Externe QR-Zielseiten können unabhängig von der App zeitweise ausfallen. Die hinterlegte Genussschmied-PDF 2026 war extern nicht sicher erreichbar und wurde nicht durch eine ältere Speisekarte ersetzt.
