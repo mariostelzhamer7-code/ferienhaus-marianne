@@ -50,3 +50,9 @@ html[data-theme="dark"] .detail-v103 .notice.caution span{color:#ffecc8!importan
 .qr-modal-v103 .qr-frame{background:#fff!important;padding:16px!important;border-radius:19px;max-width:max-content;width:auto;margin:10px auto;box-sizing:border-box}
 .qr-modal-v103 .qr-frame .qr-box{box-sizing:content-box!important;min-width:0!important;min-height:0!important;width:320px;height:320px;border:0!important;border-radius:0!important;box-shadow:none!important;padding:0!important;margin:0!important;background:#fff!important;display:block!important;overflow:hidden}
 .qr-modal-v103 .qr-frame .qr-box canvas,.qr-modal-v103 .qr-frame .qr-box img{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;display:block;object-fit:fill;border-radius:0!important;image-rendering:pixelated}
+
+/* Ferienhaus Marianne v1.1 — sixth category in the established visual system */
+.category-card.cat-bikes{background:linear-gradient(142deg,#f6fffc,#e2f6ee)!important;border-color:#c5e7dc!important}
+.category-card.cat-bikes .category-icon{background:#d6f2e7;color:#156d61}
+html[data-theme="dark"] .category-card.cat-bikes{background:linear-gradient(142deg,#203e48,#254b4b)!important;border-color:#4f8587!important}
+html[data-theme="dark"] .category-card.cat-bikes .category-icon{background:#32645f;color:#d6fff1}

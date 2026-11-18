@@ -1,8 +1,16 @@
-# Ferienhaus Marianne 1.0.4 🏡🌊
+# Ferienhaus Marianne 1.1 🏡🌊
 
 **App:** https://mariostelzhamer7-code.github.io/ferienhaus-marianne/
 
-## Neu in Version 1.0.4
+## Neu in Version 1.1 (18. November 2026)
+- Sechste Ausflugskategorie **Radfahren & E-Bike** mit sechs Strecken: Wolfgangsee-Runde, Bad Ischl, Breitenberg, Drei-Seen, Schafberg/Eisenaualm und Postalm.
+- 22-sprachige Fahrradbeschreibungen, Titel und Sicherheitshinweise sowie Distanz, Höhenmeter, geschätzte Fahrzeit und Schwierigkeit.
+- QR-Codes zu den sechs offiziellen Fahrrad-Routen und Navigation zum hinterlegten Ziel oder Ausgangspunkt bei bisherigen Ausflügen und Wanderungen.
+- Die hochgeladenen sechs Tourfotos werden als optimierte Offline-WebP-Dateien eingebunden; Nutzungsrechte sind vor öffentlicher Verteilung zu klären, insbesondere bei einem Foto mit sichtbarem Wasserzeichen.
+- Hinweis zur offiziellen Drei-Seen-Tour: 76,3 km, 806 hm, 5h 36m. Der in der Planung genannte Wert von 63,6 km gehört nicht zu dieser offiziellen Routenvariante.
+- Vorhandenes App-Design und lokale Gäste- und WLAN-Daten bleiben bestehen.
+
+## Bisher in Version 1.0.4
 - Alle fünf Ausflugskategorien, Untertitel und die Anzahl der Orte sind jetzt in allen 22 Sprachen übersetzt – darunter Spanisch, Dänisch und Griechisch.
 - Die Detailbeschreibungen in 20 weiteren Sprachen wurden deutlich erweitert. Die langen, individuell ausgearbeiteten Texte stehen weiterhin in Deutsch und Englisch zur Verfügung; vollständig inhaltsgleiche Langübersetzungen sind noch nicht für jeden einzelnen Ort vorhanden.
 - Keine Fotos-/Vergrößerungsschaltfläche mehr bei den einzelnen Detailseiten, weil wir pro Ziel genau ein Bild verwenden.
