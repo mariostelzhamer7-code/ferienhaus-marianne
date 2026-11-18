@@ -56,3 +56,15 @@ html[data-theme="dark"] .detail-v103 .notice.caution span{color:#ffecc8!importan
 .category-card.cat-bikes .category-icon{background:#d6f2e7;color:#156d61}
 html[data-theme="dark"] .category-card.cat-bikes{background:linear-gradient(142deg,#203e48,#254b4b)!important;border-color:#4f8587!important}
 html[data-theme="dark"] .category-card.cat-bikes .category-icon{background:#32645f;color:#d6fff1}
+
+/* 1.1.1: equal-width sixth-category grid, preserve established visual design */
+@media (min-width:761px){
+.category-grid.redesigned{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.2vw,16px)}
+.category-grid.redesigned>.category-card,.category-grid.redesigned>.category-card:nth-child(4),.category-grid.redesigned>.category-card:last-child{grid-column:span 1;min-width:0}
+.category-grid.redesigned>.category-card{min-height:clamp(170px,14vw,204px);padding:clamp(13px,1.45vw,20px)}
+}
+@media (max-width:760px){
+.category-grid.redesigned>.category-card:nth-child(4),.category-grid.redesigned>.category-card:last-child{grid-column:span 1}
+}
+/* Better photo rendering without forced pixelated scaling */
+.place-image img,.detail-photo img,.detail-image-static img{image-rendering:auto!important;backface-visibility:visible!important;filter:contrast(1.03) saturate(1.035)}

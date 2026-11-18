@@ -1,6 +1,14 @@
-# Ferienhaus Marianne 1.1 🏡🌊
+# Ferienhaus Marianne 1.1.1 🏡🌊
 
 **App:** https://mariostelzhamer7-code.github.io/ferienhaus-marianne/
+
+## Korrekturversion 1.1.1 · 18. November 2026
+- Alle sechs Ausflugskategorien als gleichmäßiges 3 × 2 Raster bei breiten Displays, statt überbreiter „Familien & Kinder“-Kachel.
+- Sichtbare Versionsnummer 1.1.1 auf Startseite und im Gastgeber-Bereich.
+- Fotos werden ohne erzwungene Pixel-Darstellung gerendert. Eine GitHub-Automatisierung bearbeitet die vorhandenen 37 Ausflugs-/Restaurantbilder und sechs Radtourbilder für HD-Displays nach (scharfe Skalierung, hohe Bildqualität).
+- Hinweis: Skalierung verbessert die Darstellung, stellt aber keine in kleineren Quellen fehlenden Originaldetails wieder her. Für echte hohe Detailauflösung benötigen wir höher auflösende Originaldateien.
+- Bildauswahl, sonstiges Design und gespeicherte Gastdaten bleiben unverändert.
+
 
 ## Neu in Version 1.1 (18. November 2026)
 - Sechste Ausflugskategorie **Radfahren & E-Bike** mit sechs Strecken: Wolfgangsee-Runde, Bad Ischl, Breitenberg, Drei-Seen, Schafberg/Eisenaualm und Postalm.
