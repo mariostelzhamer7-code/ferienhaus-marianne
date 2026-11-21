@@ -1,4 +1,12 @@
-# Ferienhaus Marianne 1.1.2 🏡🌊
+# Ferienhaus Marianne 1.1.3 🏡🌊
+
+## Neu in Version 1.1.3 · 21. November 2026
+- Bildschirmaufnahme des iPad 6 (Querformat) bestätigt zu große freie Fläche unter der Startseite in 1.1.2.
+- Gezieltes Mittelmaß für ältere Touch-iPads: Logo, Titel, Schrift, Wetterfeld und fünf Startkacheln deutlich besser lesbar und größer, ohne zurück zum ursprünglichen übergroßen Layout zu wechseln.
+- Vorhersage, untere Einstellungen und alle fünf Hauptkacheln bleiben im Querformat sichtbar; extra kurzer Viewport bekommt gesonderte Anpassung.
+- Bestehender PC-Modus und größere Geräte unverändert, keine globale Skalierung von Bildern oder QR-Codes.
+- Kein Eingriff in Gästedaten, Passwort, WLAN, Fotos, die sechs Radtouren oder sonstige Funktionen.
+- Versionsanzeige 1.1.3 und aktualisierter PWA-Offline-Cache.
 
 ## Neu in Version 1.1.2 · 21. November 2026
 - Spezielles kompaktes Querformat-Layout für ältere Touch-iPads wie das iPad der 6. Generation (9,7 Zoll / typische Browserbreite 1024 CSS-Pixel).
