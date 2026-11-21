@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#eaf5fc">
+<title>Ferienhaus Marianne – Aktualisierung</title>
+<style>
+*{box-sizing:border-box}body{min-height:100dvh;margin:0;padding:25px 15px;display:grid;place-items:center;background:linear-gradient(145deg,#e4f4fc,#c8e4f4);font:16px/1.55 system-ui,-apple-system,sans-serif;color:#173c58}
+main{max-width:570px;width:100%;padding:27px;background:white;border-radius:24px;box-shadow:0 12px 45px #11436b1f}
+h1{font-size:1.45rem;margin:0 0 12px}p{margin:0 0 16px}button,a.button{display:block;text-align:center;width:100%;border:0;border-radius:12px;padding:14px 12px;min-height:49px;font-size:1rem;font-weight:750;color:white;background:#1374ad;text-decoration:none;margin-top:12px;cursor:pointer}
+a.button{background:#e2f3fc;color:#174a6b}small{color:#47647a;display:block;margin-top:18px}
+</style>
+</head>
+<body>
+<main>
+<h1>🏡 Ferienhaus Marianne aktualisieren</h1>
+<p id="status" role="status" aria-live="polite">Die aktuelle Version 1.1.5 wird geprüft.</p>
+<button id="retry" type="button">Aktualisierung starten</button>
+<a class="button" id="open" href="./?from=update-115">App öffnen</a>
+<small>Gästenamen, WLAN-Daten und Einstellungen werden nicht gelöscht. Die Aktualisierung benötigt eine Internetverbindung.</small>
+</main>
+<script>
+(function(){
+"use strict";
+var target="1.1.5",status=document.getElementById("status"),button=document.getElementById("retry"),open=document.getElementById("open");
+var destination="./?updated="+encodeURIComponent(target)+"&t="+Date.now();
+open.href=destination;
+function workerVersion(worker) {
+ return new Promise(function(resolve){
+  if(!worker||typeof MessageChannel==="undefined")return resolve(null);
+  var ch=new MessageChannel(),timer=setTimeout(function(){resolve(null)},850);
+  ch.port1.onmessage=function(e){clearTimeout(timer);resolve(e.data&&e.data.version||null)};
+  try{worker.postMessage({type:"GET_VERSION"},[ch.port2])}catch(e){clearTimeout(timer);resolve(null)}
+ });
+}
+async function update(){
+ button.disabled=true;status.textContent="Aktualisierung wird überprüft und installiert …";
+ if(!navigator.onLine){status.textContent="Keine Internetverbindung. Bitte WLAN prüfen und erneut versuchen.";button.disabled=false;return;}
+ if(!("serviceWorker" in navigator)){status.textContent="Bitte die App über „App öffnen“ neu laden.";button.disabled=false;return;}
+ try {
+  var reg=await navigator.serviceWorker.register("./sw.js",{updateViaCache:"none"});
+  await reg.update();
+  if(reg.waiting)reg.waiting.postMessage({type:"SKIP_WAITING"});
+  for(var i=0;i<22;i++){
+   if(await workerVersion(reg.active)===target){
+    status.textContent="Version "+target+" ist aktiv. Die App wird geöffnet …";
+    window.location.replace(destination);return;
+   }
+   await new Promise(function(resolve){setTimeout(resolve,450)});
+  }
+  status.textContent="Die neue Version konnte noch nicht bestätigt werden. Bitte erneut versuchen oder die App öffnen.";
+ }catch(e){status.textContent="Aktualisierung nicht abgeschlossen. Bitte Internetverbindung prüfen und erneut versuchen.";}
+ button.disabled=false;
+}
+button.addEventListener("click",update);
+window.addEventListener("load",function(){update()});
+})();
+</script>
+</body>
+</html>

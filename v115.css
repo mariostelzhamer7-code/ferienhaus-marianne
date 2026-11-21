@@ -1,0 +1,7 @@
+/* Version-update notice: minimal overlay, independent of dashboard layout. */
+#marianne-update-banner { position:fixed; z-index:2000; bottom:calc(14px + env(safe-area-inset-bottom)); left:calc(14px + env(safe-area-inset-left)); right:calc(14px + env(safe-area-inset-right)); max-width:610px; box-sizing:border-box; display:flex; flex-wrap:wrap; align-items:center; gap:12px; padding:13px 15px; border-radius:16px; background:#153c59; color:#fff; border:1px solid #8cc7e7; box-shadow:0 10px 35px rgba(6,22,43,.3); font-family:system-ui,-apple-system,sans-serif; }
+#marianne-update-banner[hidden] { display:none!important; }
+#marianne-update-title { flex:1 1 160px; font-size:clamp(.87rem,1.6vw,1rem); line-height:1.35; }
+#marianne-update-action { background:#bdeafe; border:0; color:#092c46; font-weight:750; font-size:.92rem; padding:12px 15px; border-radius:12px; cursor:pointer; min-height:43px; }
+#marianne-update-action:disabled { opacity:.75; cursor:wait; }
+.marianne-update-close { background:transparent; color:#fff; border:0; font-size:1.5rem; min-width:35px; min-height:43px; cursor:pointer; }

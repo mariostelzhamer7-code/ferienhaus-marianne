@@ -1,4 +1,14 @@
-# Ferienhaus Marianne 1.1.4 🏡🌊
+# Ferienhaus Marianne 1.1.5 🏡🌊
+
+## Neu in Version 1.1.5 · 21. November 2026
+- **Zuverlässige Aktualisierungen:** Service Worker für HTML, CSS, JavaScript und Navigation von cache-first auf network-first umgestellt, offline weiterhin Fallback auf die zuletzt gespeicherten Programmdateien.
+- Frühere Versions-Caches werden gezielt für Ferienhaus Marianne abgeräumt, nicht alle Caches auf der gesamten GitHub-Pages-Domain.
+- Registrierung mit updateViaCache=none; Versionsprüfung über version.json ohne Caching, beim Start, nach Wiederaufnahme und bei bestehender Verbindung regelmäßig.
+- Bei neuer Version erscheint ein mehrsprachiger Hinweis „Neue Version verfügbar – Jetzt aktualisieren“ (22 Sprachen). Neuinstallation erfolgt erst durch Klick, sodass gerade bearbeitete Einstellungen nicht unvermittelt verloren gehen.
+- **Einmalige Reparatur für bereits festhängende Installationen:** https://mariostelzhamer7-code.github.io/ferienhaus-marianne/update.html
+- update.html ist nicht im Offline-Cache und lädt im Browser immer aus dem Netz; der bestehende alte Service Worker kann die bisher unbekannte Seite daher erstmals frisch abrufen.
+- Alle lokal gespeicherten Gäste-/WLAN-Einstellungen und Bildanpassungen bleiben erhalten; es gibt kein localStorage.clear(), keinen Reset der IndexedDB und keine Neuinstallation.
+- Das zuletzt abgestimmte iPad-6-Layout aus 1.1.4 bleibt unverändert.
 
 ## Neu in Version 1.1.4 · 21. November 2026
 - Foto vom iPad 6 bestätigt: 1.1.3 wird korrekt geladen, unten bleibt noch etwas Platz.
