@@ -1,4 +1,11 @@
-# Ferienhaus Marianne 1.1.3 🏡🌊
+# Ferienhaus Marianne 1.1.4 🏡🌊
+
+## Neu in Version 1.1.4 · 21. November 2026
+- Foto vom iPad 6 bestätigt: 1.1.3 wird korrekt geladen, unten bleibt noch etwas Platz.
+- Feinschliff ausschließlich auf älteren iPads im Querformat: Wetterbereich ca. 8 px und fünf Hauptkacheln ca. 19 px höher (bei 1024 × 768 CSS-Pixeln).
+- Für niedrigere verfügbare Bildschirmhöhe fällt die Vergrößerung vorsichtiger aus, damit die Einstellungen weiterhin erreichbar sind.
+- Sonstiges Layout und Desktop-Darstellung, Inhalte, Bilder, Routen, QR-Codes, Gastgeber- und WLAN-Daten bleiben unverändert.
+- Version 1.1.4 in Startseite und Gastgeberbereich, neuer Offline-Cache für die Aktualisierung.
 
 ## Neu in Version 1.1.3 · 21. November 2026
 - Bildschirmaufnahme des iPad 6 (Querformat) bestätigt zu große freie Fläche unter der Startseite in 1.1.2.
