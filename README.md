@@ -1,4 +1,12 @@
-# Ferienhaus Marianne 1.1.1 🏡🌊
+# Ferienhaus Marianne 1.1.2 🏡🌊
+
+## Neu in Version 1.1.2 · 21. November 2026
+- Spezielles kompaktes Querformat-Layout für ältere Touch-iPads wie das iPad der 6. Generation (9,7 Zoll / typische Browserbreite 1024 CSS-Pixel).
+- Kleineres Logo, kompakterer Kopfbereich, Wetterkarte und fünf Startkacheln, mit besser erreichbarem Fußbereich; Ziel: Startseite ohne Scrollen auf dem Gäste-iPad.
+- Sechs Ausflugskategorien bleiben gleich breit in zwei Reihen.
+- Medienabfragen mit Touch-/Bildschirmgrößen-Bedingung: normale Desktop-Ansicht und größere Geräte bleiben unverändert. Kein CSS-Zoom, die Inhalte und QR-Codes werden nicht global verkleinert.
+- Version 1.1.2 sichtbar auf Startseite und im Gastgeber-Bereich, neuer Offline-PWA-Cache.
+- Die Fotodateien bleiben unverändert. Bereits quellseitig unscharfe Bilder lassen sich durch Layout-CSS allein nicht reparieren.
 
 **App:** https://mariostelzhamer7-code.github.io/ferienhaus-marianne/
 
